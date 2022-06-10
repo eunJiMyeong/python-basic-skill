@@ -15,12 +15,16 @@
 
 #while 1 :
   ######## 프로그램을 완성하세요
-Start = ''
 dict = {'command':''}
-while(Start != 'Q'):
-    dict['command'] = input("변수를 입력하세요")
-    Start = input("종료하려면 Q를 입력하세요")
-    if Start == 'Q':
-        break
-print(dict)
+while(dict['command'] == ''):
+    try:
+        dict['command'] = input("변수를 입력하세요")
+        print(dict)
+        dict['command'] = input("종료하려면 Q를 입력하세요")
+        if dict['command'] != 'Q':
+            dict['command'] = ''
+        else:
+            raise Exception
+    except Exception as e:
+        print("종료")
 
