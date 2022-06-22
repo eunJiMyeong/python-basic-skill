@@ -77,7 +77,6 @@ while(dict['command'] != 'Q'):
         if not(-5 <= dict['x'] and 5 >= dict['x']):
             limit(dict)
         elif not(-5 <= dict['y'] and 5 >= dict['y']):
-            print('bye')
             limit(dict)
             
     except Exception as e:
