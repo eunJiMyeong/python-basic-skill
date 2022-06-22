@@ -31,17 +31,13 @@ def limit(dict):
     if not(-5 <= dict['x'] and 5 >= dict['x']):
         if -6 >= dict['x']:
             dict['x'] = dict['x'] +1
-            del dict['history'][-1]
         elif 6 >= dict['x']:
             dict['x'] = dict['x'] -1
-            del dict['history'][-1]
     if not(-5 <= dict['y'] and 5 >= dict['y']):
         if -6 >= dict['y']:
             dict['y'] = dict['y'] +1
-            del dict['history'][-1]
         elif 6 >= dict['y']:
             dict['y'] = dict['y'] -1
-            del dict['history'][-1]
     raise Exception("맵의 크기는 5*5 입니다. 더이상 이동 불가능합니다.")
 
 def count_direction(dict):
