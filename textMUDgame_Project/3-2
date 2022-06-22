@@ -1,0 +1,85 @@
+# q0108 에서 작업한 내용을 복사 후 개선합니다
+# 이동하는 기능을 함수로 분리
+# (5,5) 좌표 벗어났을때 원래 자리로 돌아오는 기능 함수로 분리 -> 구현 완료
+# 좌표 (2,2) 에는 돌이 있어서 이동할 수 없음, 원래 자리로 돌아와야함 -> 구현 완료
+# 좌표 (5,5) 에가면 축하합니다 라는 멘트와 함께 종료 -> 
+
+dict = {'command':'','history':[],'x':0,'y':0, 'name':'', 'lv':1}
+
+def move(dict):
+    if dict['command'] == '@w':
+        print("위로 이동합니다.")
+        dict['history'].append(dict['command'])
+        dict['y'] = dict['y'] +1
+                
+    elif dict['command'] == '@a':
+        print("왼쪽으로 이동합니다.")
+        dict['history'].append(dict['command'])
+        dict['x'] = dict['x'] -1
+
+    elif dict['command'] == '@s':
+        print("아래로 이동합니다.")
+        dict['history'].append(dict['command'])
+        dict['y'] = dict['y'] -1
+
+    elif dict['command'] == '@d':
+        print("오른쪽으로 이동합니다.")
+        dict['history'].append(dict['command'])
+        dict['x'] = dict['x'] +1
+
+def limit(dict):
+    if not(-5 <= dict['x'] and 5 >= dict['x']):
+        if -6 >= dict['x']:
+            dict['x'] = dict['x'] +1
+            del dict['history'][-1]
+        elif 6 >= dict['x']:
+            dict['x'] = dict['x'] -1
+            del dict['history'][-1]
+    if not(-5 <= dict['y'] and 5 >= dict['y']):
+        if -6 >= dict['y']:
+            dict['y'] = dict['y'] +1
+            del dict['history'][-1]
+        elif 6 >= dict['y']:
+            dict['y'] = dict['y'] -1
+            del dict['history'][-1]
+    raise Exception("맵의 크기는 5*5 입니다. 더이상 이동 불가능합니다.")
+
+def count_direction(dict):
+    if dict['history'][-1] == '@w':
+        dict['y'] = dict['y'] -1
+    elif dict['history'][-1] == '@d':
+        dict['x'] = dict['x'] - 1
+    print("돌이 있어서 이동할 수 없습니다.")
+    print("원래 좌표로 돌아갑니다")
+    
+            
+while(dict['command'] != 'Q'):
+    print("시작 (",dict['x'],",",dict['y'],")")
+    
+    try:
+        dict['command'] = input("이름입력: @name / 레벨입력: @lv / 위로이동: @w / 왼쪽이동: @a / 아래이동: @s / 오른쪽이동: @d / 종료: Q / 입력한값들 출력: @h / 이름,레벨출력: @info")
+        if dict['command'] == '@name':
+            dict['name'] = input("이름을 입력해주세요")
+        elif dict['command'] == '@lv':
+            dict['lv'] = input("레벨을 입력해주세요")
+        elif dict['command'] == '@info':
+            print("name = ",dict['name'],",","lv = ",dict['lv'])
+        elif dict['command'] == '@w' or dict['command'] == '@a' or dict['command'] == '@s' or dict['command'] =='@d':
+            move(dict)
+            if dict['x'] ==2 and dict['y'] == 2:
+                count_direction(dict)
+        elif dict['command'] == 'Q':
+            print("종료합니다")
+        elif dict['command'] == '@h':
+            print(dict['history'])
+        else:
+            print("잘못된 입력입니다")
+        
+        if not(-5 <= dict['x'] and 5 >= dict['x']):
+            limit(dict)
+        elif not(-5 <= dict['y'] and 5 >= dict['y']):
+            print('bye')
+            limit(dict)
+            
+    except Exception as e:
+        print("오류입니다", e)
