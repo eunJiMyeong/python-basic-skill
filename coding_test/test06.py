@@ -31,5 +31,3 @@ for i in range(N):
     s,t,cur = sys.stdin.readline().split()
     S = S[:int(cur)] + S[int(cur):].replace(s,t)
     print(S)
-
-print(S)
