@@ -35,7 +35,9 @@ for i in range(1,n+1):
     if distance[min] > distance[i]:
         min = i
 print(min)
-        
+
+# 아래 코드로도 가능
+
 # import sys
 
 # N = int(sys.stdin.readline())
@@ -46,7 +48,7 @@ print(min)
 
 # score = [0]*N # [0,0,0,0,0,0,]
 # # [[0] for _ in range(N)] 은 [[0],[0],[0]] 이런식으로 나오는데 밑에서 score[i]+=로 계산이 불가능함
-
+# answer = 0
 # for i in range(N):
 #     for j in range(N):
 #         score[i] += abs(apart[i][0]-apart[j][0])*apart[j][1]
