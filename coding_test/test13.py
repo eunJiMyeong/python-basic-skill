@@ -19,7 +19,8 @@
 N,M = map(int, input().split())
 graph = []
 for i in range(N):
-    graph.append(list(map(int, input())))
+    graph.append(list(map(int, input()))) 
+    # list(map(int,sys.stdin.readline().split())) 은 011, 010 입력시 [[11],[10]] 이런식으로 나옴
 print(N,M,graph)
 
 def dfs(x,y):
@@ -30,7 +31,7 @@ def dfs(x,y):
     if graph[x][y] == 0:
         graph[x][y] = 1 # 
         # 상하좌우 좌표값 1로 만들어주기
-        # 재귀적으로 반복하여 주변이 모두 1이될때까지 반복
+        # 재귀적으로 반복하여 상좌표로 갔을때 상좌표 자리에서 상하좌우를 또 탐색하게 됨
         dfs(x-1,y)
         dfs(x,y-1)
         dfs(x+1,y)
@@ -45,6 +46,7 @@ for i in range(N):
         # 0,0부터 시작해서 연속적으로 붙어있는 모든칸에 대해 값을 0->1로 바꾼 후 True 뱉는 횟수 count
         if dfs(i,j) == True:
             result +=1
+            print("넘어감")
             
 print(result)
-print(graph)
+# print(graph)

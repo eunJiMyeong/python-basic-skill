@@ -25,9 +25,9 @@ for i in range(N):
         dict[age].append(name)
     else:
         dict[age] = [name]
-    
+# print(dict)
 dict = sorted(dict.items(), reverse=True)
-
+# print(dict)
 for k,v in dict:
     check = False
     if len(v)>1:

@@ -24,7 +24,7 @@ for i in range(N):
     name, score = input().split()
     score = int(score)
     student.append([name, score])
-
+# print(student)
 # 리스트로 정렬하면 알파벳 오름차순으로 디폴트 정렬됨
 student.sort()
 student = sorted(student, key=lambda x:(x[1]))
