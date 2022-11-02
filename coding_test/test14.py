@@ -38,6 +38,7 @@ def bfs(x,y):
     que.append((x,y))
     while que:
         x,y = que.popleft()
+        # 상하좌우 탐색 반복해서 1인곳 좌표를 한번에 모두 append하고 +1로 만듦
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
